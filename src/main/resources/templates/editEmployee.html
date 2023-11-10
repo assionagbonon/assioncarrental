@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description"
+	content="Creative - Bootstrap 3 Responsive Admin Template">
+<meta name="author" content="GeeksLabs">
+<meta name="keyword"
+	content="Creative, Dashboard, Admin, Template, Theme, Bootstrap, Responsive, Retina, Minimal">
+<link rel="shortcut icon" href="img/favicon.png">
+<link
+	href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.19.1/css/mdb.min.css"
+	rel="stylesheet">
+<title>Car Fleet (Spring,Thymeleaf)</title>
+
+<!-- Bootstrap CSS -->
+<link href="/css/bootstrap.min.css" rel="stylesheet">
+<!-- bootstrap theme -->
+<link href="/css/bootstrap-theme.css" rel="stylesheet">
+<!--external css-->
+<!-- font icon -->
+<link href="/css/elegant-icons-style.css" rel="stylesheet" />
+<link href="/css/font-awesome.min.css" rel="stylesheet" />
+<!-- full calendar css-->
+<link
+	href="/assets/fullcalendar/fullcalendar/bootstrap-fullcalendar.css"
+	rel="stylesheet" />
+<link href="/assets/fullcalendar/fullcalendar/fullcalendar.css"
+	rel="stylesheet" />
+<!-- easy pie chart-->
+<link href="/assets/jquery-easy-pie-chart/jquery.easy-pie-chart.css"
+	rel="stylesheet" type="text/css" media="screen" />
+<!-- owl carousel -->
+<link rel="stylesheet" href="/css/owl.carousel.css" type="text/css">
+<link href="/css/jquery-jvectormap-1.2.2.css" rel="stylesheet">
+<!-- Custom styles -->
+<link rel="stylesheet" href="/css/fullcalendar.css">
+<link href="/css/widgets.css" rel="stylesheet">
+<link href="/css/style.css" rel="stylesheet">
+<link href="/css/style-responsive.css" rel="stylesheet" />
+<link href="/css/xcharts.min.css" rel=" stylesheet">
+<link href="/css/jquery-ui-1.10.4.min.css" rel="stylesheet">
+<!-- =======================================================
+    Theme Name: NiceAdmin
+    Theme URL: https://bootstrapmade.com/nice-admin-bootstrap-admin-html-template/
+    Author: BootstrapMade
+    Author URL: https://bootstrapmade.com
+  ======================================================= -->
+</head>
+
+<body>
+	<!-- container section start -->
+	<section id="container" class="">
+
+
+		<div th:insert="header :: header"></div>
+		<!--header end-->
+
+		<!--sidebar start-->
+		<div th:insert="sidebar :: sidebar"></div>
+		<!--sidebar end-->
+
+		<!--main content start-->
+		<section id="main-content">
+			<section class="wrapper">
+				<!--overview start-->
+				<div class="row">
+					<div class="col-lg-12">
+						<h3 class="page-header">
+							<i class="fa fa-laptop"></i> EMPLOYEES
+						</h3>
+						<ol class="breadcrumb">
+							<li><i class="fa fa-home"></i><a th:href="@{/index}">Home</a></li>
+							<li>Employee</li>
+							<li>Edit</li>
+						</ol>
+					</div>
+				</div>
+				<div class="col-lg-12">
+					<form th:action="@{/updateemployee/{id}(id=${employee.id})}"
+						  th:object="${employee}" method="post">
+						<div class="form-group">
+							<label for="firstname">First Name</label> <input name="firstname"
+																			 type="text" class="form-control" id="firstname"
+																			 aria-describedby="emailHelp" placeholder="First Name" th:value="${employee.firstname}">
+						</div>
+
+						<div class="form-group">
+							<label for="lastname">Last Name</label> <input name="lastname"
+																		   type="text" class="form-control" id="lastname"
+																		   aria-describedby="emailHelp" placeholder="Last Name" th:value="${employee.lastname}">
+						</div>
+
+
+						<div class="form-group">
+							<label for="mobile">Mobile</label> <input name="mobile"
+																	  type="text" class="form-control" id="mobile"
+																	  aria-describedby="emailHelp" placeholder="Mobile" th:value="${employee.mobile}">
+						</div>
+
+
+						<div class="form-group">
+							<label for="phone">Phone</label> <input name="phone"
+																	type="text" class="form-control" id="phone"
+																	aria-describedby="emailHelp" placeholder="Phone" th:value="${employee.phone}">
+						</div>
+
+						<div class="form-group">
+							<label for="address">Adress</label> <input name="address"
+																	   type="text" class="form-control" id="address"
+																	   aria-describedby="emailHelp" placeholder="Address" th:value="${employee.address}">
+						</div>
+
+
+						<div class="form-group">
+							<label for="email">Email</label> <input name="email"
+																	type="text" class="form-control" id="email"
+																	aria-describedby="emailHelp" placeholder="Email" th:value="${employee.email}">
+						</div>
+
+						<div class="form-group">
+							<label for="hireDate">Hire date</label> <input
+								name="hireDate" type="date" class="form-control"
+								id="hireDate" aria-describedby="emailHelp"
+								placeholder="Hire date" th:value="${employee.hireDate}">
+						</div>
+
+						<div class="form-group">
+							<label >Job title</label> <select
+								class="form-control" name="jobtitleid">
+							<option th:each="jobtitle:${jobtitles}" th:text="${jobtitle.description}"
+									th:value="${jobtitle.id}"></option>
+						</select>
+
+						</div>
+
+
+						<button type="submit" class="btn btn-primary">Edit</button>
+
+
+					</form>
+
+				</div>
+
+
+			</section>
+
+
+
+		</section>
+		<!--main content end-->
+	</section>
+	<!-- container section start -->
+	<div th:insert="footer :: footer"></div>
+	<div th:insert="scripts :: scripts"></div>
+</body>
+
+</html>
